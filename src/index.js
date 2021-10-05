@@ -44,17 +44,16 @@ app.post ("/produtos", (req, res, next) => {
    app.get ("/produtos", (req, res, next) => {
     res.status(200).json(produtos);
    });
-   
    //tratamento de requisições PUT
    app.put("/produtos", (req, res, next) => {
-    produtos.forEach ((produto) => {
-    if (produto.ProdId === req.body.ProdId){
-    produto.ProdUnidade = req.body.ProdUnidade,
-    produto.ProdValorUnit = req.body.ProdValorUnit
-    }
+    produtos.forEach((produto) => {
+        if (produto.ProdId === req.body.ProdId) {
+            produto.ProdUnidade = req.body.ProdUnidade,
+                produto.ProdValorUnit = req.body.ProdValorUnit
+        }
+    })
     res.status(204).end();
-    });
-
+})
     //tratamento de requisições DELETE
     app.delete("/produtos", (req, res, next) => {
         produtos.forEach((produto) => {
@@ -65,6 +64,4 @@ app.post ("/produtos", (req, res, next) => {
             }
         })
         res.status(200).json(produtos).end();
-    })  
-
-   }); 
+    });  
